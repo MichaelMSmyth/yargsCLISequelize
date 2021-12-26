@@ -11,4 +11,4 @@ const Movie = sequelize.define("Movie", {
     }
 })
 
-modules.exports = Movie;
+module.exports = Movie;

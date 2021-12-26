@@ -1,4 +1,7 @@
 const { DatabaseError } = require("sequelize/dist")
+const yargs = require("yargs");
+const { createRecord, readRecord, updateRecord, deleteRecord } = require("./movie/movie.functions.js");
+
 
 // Task:
 
@@ -15,7 +18,7 @@ const app = async (args) => {
     // Take the args object and slice it into seperate objects representing the command and their input data
     // Data to be input to the db should be one object: inputObj{}
     // Data to filter by should be one object: filterObj{}
-    // Data to sort by should be one object: sortObj
+    // Data to sort by should be one object: sortObj{}
   
     // Dot notation can be used with yargs so I can seperate input data from filter and sort in the cli
     //e.g. node src/app.js --create.title="Movie title" --create.actor="Johhny Megastar"
@@ -66,11 +69,9 @@ const app = async (args) => {
   
       } else {
         console.log("Incorrect command");
-        mongoose.disconnect();
       }
     } catch (error) {
       console.log(error);
-      mongoose.disconnect();
     }
   };
   
